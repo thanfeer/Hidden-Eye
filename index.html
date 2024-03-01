@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDDEN EYE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        h1, h2, h3 {
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            /*background-color: #4CAF50;*/
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 40px;
+            width: 100px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HIDDEN EYE</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Mathematical Puzzle</h2>
+            <h3>Riddles to Solve the Puzzle</h3>
+            <p>I am a four-digit number.
+                <br> My thousands digit is twise my hundreds digit.
+                <br>My tens digit is one less than my units digit. 
+                <br>The sum of my digits is 19. 
+                <br>What number am I?</p>
+            <form id="answerForm">
+                <input type="text" id="answerInput" placeholder="cast the spell">
+                
+                <br>
+                <input type="submit" value="🔐">
+            </form>
+            <p id="errorMessage" style="display: none; color: red;">Incorrect answer. Please try again.</p>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById("answerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var answer = document.getElementById("answerInput").value;
+            if (answer === "9451") {
+                window.location.href = "level 2/next_page.html"; // Redirect to the next page
+            } else {
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
