@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDDEN EYE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Add background image with low opacity */
+            background-image: url("../Image/1052.jpg");
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center top 10px;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        h1, h2, h3 {
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            color: #fff;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 40px;
+            width: 100px;
+            height: 60px;
+            background-color: transparent;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color:transparent;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            color: white;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        .image-container img {
+            opacity: 0; /* Make the image semi-transparent */
+            width: 100%; /* Make sure image occupies full space of container */
+        }
+        .alphabets {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; /* This ensures the alphabets won't interfere with form input */
+        }
+        .alphabets span {
+            font-size: 20px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.7); /* Adjust transparency of alphabets */
+            margin: 5px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HIDDEN EYE</h1>
+    </header>
+    <div class="container">
+        <section>
+            <div class="image-container">
+                <img src="../Image/+DHC.png" alt="clue">
+                <div class="alphabets">
+                    <span id="letterA">+</span>
+                    <span id="letterB">O</span>
+                    <span id="letterC">D</span>
+                    <span id="letterD">C</span>
+                    <span id="letterE">C</span>
+                    <span id="letterF">A</span>
+                    <span id="letterG">E</span>
+                    <span id="letterH">K</span>
+                    <span id="letterI">H</span>
+                </div>
+            </div>
+            <form id="answerForm">
+                <input type="text" id="answerInput" placeholder="Cast your spell here">
+                
+                <br>
+                <input type="submit" value="🔐">
+            </form>
+            <p id="errorMessage" style="display: none; color: red;">Incorrect answer. Please try again.</p>
+        </section>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="../Image/Soman.jpg" alt="Soman">
+            <p>Incorrect answer! Please try again.</p>
+            <button id="okButton">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        document.getElementById("answerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var answer = document.getElementById("answerInput").value;
+            if (answer === "CRYPT") {
+                window.location.href = "./level4end.html"; // Redirect to the next page
+            } else {
+                document.getElementById("errorMessage").style.display = "block";
+                modal.style.display = "block";
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks on OK button, close the modal
+        var okButton = document.getElementById("okButton");
+        okButton.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Change position of alphabets every 3 seconds
+        setInterval(function() {
+            var alphabets = document.querySelectorAll('.alphabets span');
+            alphabets.forEach(function(alphabet) {
+                var randomX = Math.floor(Math.random() * 70); // Random X position
+                var randomY = Math.floor(Math.random() * 70); // Random Y position
+                alphabet.style.left = randomX + "%";
+                alphabet.style.top = randomY + "%";
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

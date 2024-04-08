@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDDEN EYE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Add background image with low opacity */
+            background-image: url("../Image/eyei.jpg");
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        h1, h2, h3 {
+            margin: 0;
+        }
+        .container {
+            color: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 40px;
+            width: 100px;
+            height: 60px;
+            background-color: transparent;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: transparent;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            color: rgb(231, 213, 213);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button-ok {
+            background-color: #fff;
+            border: 0 solid #e2e8f0;
+            border-radius: 1.5rem;
+            box-sizing: border-box;
+            color: #0d172a;
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1;
+            padding: 1rem 1.6rem;
+            text-align: center;
+            text-decoration: none #0d172a solid;
+            text-decoration-thickness: auto;
+            transition: all .1s cubic-bezier(.4, 0, .2, 1);
+            box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-ok:hover {
+            background-color: #1e293b;
+            color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            .button-ok {
+                font-size: 1.125rem;
+                padding: 1rem 2rem;
+            }
+        }
+
+        audio {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        h4{
+            margin-top: 60px;
+        }
+        h3{
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>HIDDEN EYE</h1>
+</header>
+<div class="container">
+    <section>
+        <h2></h2>
+        <h4> A mystery waiting to unfold <br>
+            Like whispers from the past, <br>
+            can you unravel their secret <br> and reveal the hidden tale they hold?</h4>
+        <h3>" G T Y O R J O T E O U I A B G T "</h3>
+        <form id="answerForm">
+            <input type="text" id="answerInput" placeholder="Let the Goblet of Fire ignite">
+
+            <br>
+            <input type="submit" value="🔐">
+        </form>
+        <p id="errorMessage" style="display: none; color: red;">Incorrect answer. Please try again.</p>
+    </section>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="../Image/Soman.jpg" alt="Soman">
+        <p>Be like Keman Soman👍🏼.</p>
+        <button class="button-ok">OK</button>
+    </div>
+</div>
+<audio autoplay loop>
+    <source src="./Audio/Stranger things.mpeg" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    document.getElementById("answerForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var answer = document.getElementById("answerInput").value;
+        if (answer === "GREAT JOB YOU GOT IT") {
+            window.location.href = "./level1end.html"; // Redirect to the next page
+        } else {
+            document.getElementById("errorMessage").style.display = "block";
+            modal.style.display = "block";
+        }
+    });
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks on OK button, close the modal
+    var okButton = document.querySelector(".button-ok");
+    okButton.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDDEN EYE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            display: flex;
+            flex-direction: column; /* To ensure header and content stack vertically */
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header{
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%; /* Make the header span the full width */
+        }
+        #image-container {
+            position: relative;
+            width: 100vw;
+            height: calc(100vh - 120px); /* Adjusted height for the remaining area after header */
+            background: url("../Image/Escaperoom/walls_rocks.jpg") no-repeat center center;
+            background-size: cover; /* Cover the whole area */
+        }
+        .link {
+            position: absolute;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .link:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        #link1{
+            color:#8EE5EE;
+        }
+        #link2{
+            color:#99e7ef;
+        }
+        #link3{
+            color:#7fced6;
+        }
+        #link4{
+            color:#bbeff4;
+        }
+        #link5{
+            color:#ddf7f9;
+        }
+        #link6{
+            color:#bef1f5;
+        }
+        #link7{
+            color:#a1f9ff;
+        }
+        #link8{
+            color:#69bfc5;
+        }
+        #link9{
+            color:#60e9f3;
+        }
+        #link10{
+            color:#66CCCC;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HIDDEN EYE</h1>
+    </header>
+    <div id="image-container">
+        <!-- Links -->
+        <a class="link" id="link1" href="./next/a/1.html.html">Obliviate </a>
+        <a class="link" id="link2" href="./next/b/1.html.html">Obliviate </a>
+        <a class="link" id="link3" href="./next/c/1.html.html">Obliviate </a>
+        <a class="link" id="link4" href="./next/d/1.html.html">Obliviate </a>
+        <a class="link" id="link5" href="./next/e/1.html.html">Obliviate </a>
+        <a class="link" id="link6" href="./next/f/1.html.html">Obliviate </a>
+        <a class="link" id="link7" href="./next/g/1.html.html">Obliviate </a>
+        <a class="link" id="link8" href="./next/h/1.html.html">Obliviate </a>
+        <a class="link" id="link9" href="./next/i/1.html.html">Obliviate </a>
+        <a class="link" id="link10" href="./next/j/1.html.html">Obliviate </a>
+    </div>
+
+    <script>
+        function getRandomPosition() {
+            // Calculate random positions within the bounds of the background image
+            const imageContainer = document.getElementById('image-container');
+            const imageWidth = imageContainer.offsetWidth;
+            const imageHeight = imageContainer.offsetHeight;
+            
+            const linkWidth = 100; // Adjusted width of the link element
+            const linkHeight = 50; // Adjusted height of the link element
+
+            const x = Math.random() * (imageWidth - linkWidth); 
+            const y = Math.random() * (imageHeight - linkHeight); 
+
+            return { x, y };
+        }
+
+        function moveLinks() {
+            const links = document.querySelectorAll('.link');
+            links.forEach(link => {
+                const newPosition = getRandomPosition();
+                link.style.left = `${newPosition.x}px`;
+                link.style.top = `${newPosition.y}px`;
+            });
+        }
+
+        // Move links initially
+        moveLinks();
+
+        // Move links every 3 seconds
+        setInterval(moveLinks, 3000);
+    </script>
+</body>
+</html>
